@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/22 15:15:16 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:41:41 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	**ft_strsplit(char const *s, char c)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	int				i;
+	int				q;
+	char			**ret;
+	int				p;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	p = 0;
+	q = 0;
+	if (!s || !(ret = (char **)malloc(sizeof(char*) * (ft_wordc(s, c) + 1))))
+		return (NULL);
+	while (s[i] != '\0')
 	{
-
-		x = 10;
-		while (y < 150)
+		if (s[i] == c)
+			i++;
+		else
 		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
+			p = i;
+			while (s[i] && s[i] != c)
+				i++;
+			ret[q++] = ft_strsub(s, p, i - p);
 		}
-		y += 10;
 	}
-	mlx_loop(mlx);
+	ret[q] = 0;
+	return (ret);
 }

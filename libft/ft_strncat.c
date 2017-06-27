@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/05/30 09:26:22 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:41:06 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strncat(char *s1, const char *s2, size_t size)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	size_t	i;
+	size_t	len;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	len = (size_t)ft_strlen(s1);
+	while (s2[i] != '\0' && i < size)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		s1[len + i] = s2[i];
+		i++;
 	}
-	mlx_loop(mlx);
+	s1[len + i] = '\0';
+	return (s1);
 }

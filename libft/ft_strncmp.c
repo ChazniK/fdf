@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/05/30 15:49:54 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/11 18:36:12 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	size_t			i;
+	unsigned char	*u1;
+	unsigned char	*u2;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	u1 = (unsigned char*)s1;
+	u2 = (unsigned char*)s2;
+	i = 0;
+	while (((u1[i] == u2[i]) && (i < n)) && (u1[i] != '\0' && u2[i] != '\0'))
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		if (u1[i] == '\0')
+			return (0);
+		i++;
 	}
-	mlx_loop(mlx);
+	if ((s1[i] == '\0') && (s2[i] == '\0'))
+		return (0);
+	return (u1[i] - u2[i]);
 }

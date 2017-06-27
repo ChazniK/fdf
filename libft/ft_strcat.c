@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/05/29 17:59:16 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:40:09 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
-
-int		main()
+char	*ft_strcat(char *s1, const char *s2)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	int		len;
+	int		i;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	len = 0;
+	i = 0;
+	while (s1[len] != '\0')
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		len++;
 	}
-	mlx_loop(mlx);
+	while (s2[i] != '\0')
+	{
+		s1[len] = s2[i];
+		len++;
+		i++;
+	}
+	s1[len] = '\0';
+	return (s1);
 }

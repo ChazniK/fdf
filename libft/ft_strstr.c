@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/22 15:16:02 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:16:14 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strstr(const char *big, const char *little)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	int		i;
+	char	*tmp;
+	int		len;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	len = ft_strlen(little);
+	tmp = (char *)big;
+	if (!little[0])
+		return ((char *)big);
+	while (tmp[i])
 	{
-
-		x = 10;
-		while (y < 150)
+		if (tmp[i] == little[0])
 		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
+			if (ft_strnequ(&tmp[i], (char*)little, len) == 1)
+			{
+				return (&tmp[i]);
+			}
 		}
-		y += 10;
+		i++;
 	}
-	mlx_loop(mlx);
+	return (NULL);
 }

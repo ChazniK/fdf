@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/22 15:19:39 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:19:46 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+void	ft_putnbr(int n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	long int	nbr;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	nbr = n;
+	if (nbr < 0)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		ft_putchar('-');
+		nbr = nbr * (-1);
 	}
-	mlx_loop(mlx);
+	if (nbr >= 10)
+	{
+		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr % 10);
+	}
+	else
+	{
+		ft_putchar(nbr + '0');
+	}
 }

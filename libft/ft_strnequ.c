@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/09 15:56:47 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/09 15:57:37 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	int		i;
+	int		j;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	j = 0;
+	if (!(s1 && s2))
+		return (0);
+	while ((s1[i] && s2[j]) && (s1[i] == s2[j]) && (n > 0))
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		i++;
+		j++;
+		n--;
 	}
-	mlx_loop(mlx);
+	if ((s1[i] == '\0' && s2[j] == '\0') || (n == 0))
+		return (1);
+	return (0);
 }

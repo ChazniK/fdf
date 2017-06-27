@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/08 09:49:38 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:40:53 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	int		len;
+	char	*new_str;
+	int		i;
+	int		k;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	len = ft_strlen(s1) + ft_strlen(s2);
+	new_str = ft_strnew(len);
+	i = 0;
+	if (!new_str || !s1 || !s2)
+		return (NULL);
+	k = 0;
+	while (s1[i] != '\0')
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		new_str[k] = s1[i];
+		i++;
+		k++;
 	}
-	mlx_loop(mlx);
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		new_str[k] = s2[i];
+		i++;
+		k++;
+	}
+	return (new_str);
 }

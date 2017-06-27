@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/07 13:34:50 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/11 16:03:11 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	char	*str;
+	size_t	size;
+	int		i;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	if (s)
 	{
-
-		x = 10;
-		while (y < 150)
+		size = (size_t)(ft_strlen(s));
+		str = ft_strnew(size);
+		if (!str)
+			return (NULL);
+		else
 		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
+			i = 0;
+			while (s[i])
+			{
+				str[i] = f(s[i]);
+				i++;
+			}
+			return (str);
 		}
-		y += 10;
 	}
-	mlx_loop(mlx);
+	return (NULL);
 }

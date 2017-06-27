@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/09 16:06:03 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/11 17:33:06 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	size_t	j;
+	size_t	str_len;
+	char	*sub_str;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	str_len = (size_t)ft_strlen(s);
+	if (!s)
+		return (NULL);
+	if (start > str_len)
+		return (NULL);
+	sub_str = ft_strnew(len);
+	if (!sub_str)
+		return (NULL);
+	j = 0;
+	while (len > 0)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		sub_str[j] = s[start];
+		j++;
+		start++;
+		len--;
 	}
-	mlx_loop(mlx);
+	return (sub_str);
 }

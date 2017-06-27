@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/02 09:48:31 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/11 15:34:58 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	unsigned char	*temp_s1;
+	unsigned char	*temp_s2;
+	size_t			i;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	temp_s1 = (unsigned char*)s1;
+	temp_s2 = (unsigned char*)s2;
+	while (i < n)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		if (temp_s1[i] != temp_s2[i])
+			return (temp_s1[i] - temp_s2[i]);
+		i++;
 	}
-	mlx_loop(mlx);
+	return (0);
 }

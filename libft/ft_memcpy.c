@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/01 13:50:26 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/11 17:21:23 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	size_t			i;
+	unsigned char	*conv_dest;
+	unsigned char	*conv_src;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	i = 0;
+	conv_dest = (unsigned char*)dest;
+	conv_src = (unsigned char*)src;
+	while (i < n)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		conv_dest[i] = conv_src[i];
+		i++;
 	}
-	mlx_loop(mlx);
+	return (conv_dest);
 }

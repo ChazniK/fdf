@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/01 14:43:28 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/10 14:54:46 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	size;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	d = (unsigned char*)dest;
+	s = (unsigned char*)src;
+	size = (unsigned char)len;
+	if (s == d)
+		return (dest);
+	if (s < d)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		s = (unsigned char*)src + size - 1;
+		d = dest + size - 1;
+		while (size--)
+			*d-- = *s--;
 	}
-	mlx_loop(mlx);
+	else
+	{
+		while (size--)
+			*d++ = *s++;
+	}
+	return (dest);
 }

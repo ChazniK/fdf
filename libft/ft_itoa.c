@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/27 11:02:30 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/27 13:54:17 by ckatz            ###   ########.fr       */
+/*   Created: 2017/06/22 15:38:42 by ckatz             #+#    #+#             */
+/*   Updated: 2017/06/22 15:38:47 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main()
+char			*ft_itoa(int n)
 {
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
+	long	l;
+	size_t	cnt;
+	char	*str;
+	char	neg;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (x < 150)
+	l = n;
+	neg = (l < 0 ? 1 : 0);
+	cnt = ft_charcount(l);
+	str = ft_strnew(cnt + neg);
+	if (str == NULL)
+		return (NULL);
+	if (neg)
 	{
-
-		x = 10;
-		while (y < 150)
-		{
-			mlx_pixel_put(mlx, win, (x + y), y, 0x00FFFFF);
-			mlx_pixel_put(mlx, win, x, (y + x), 0x00FFFFF);
-			x += 10;
-		}
-		y += 10;
+		l = -l;
+		str[0] = '-';
 	}
-	mlx_loop(mlx);
+	while (cnt > 0)
+	{
+		str[cnt + neg - 1] = (l % 10) + '0';
+		cnt--;
+		l /= 10;
+	}
+	return (str);
 }
