@@ -1,54 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   points.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/11 17:39:25 by ckatz             #+#    #+#             */
+/*   Updated: 2017/08/11 17:41:16 by ckatz            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <mlx.h>
 #include "libft/libft.h"
 
-int		main()
+int void	fd_error_check(int fd)
 {
-	char	*lines;
-	char	**holder;
-	//int	no_lines;
-	int	fd;
-	//int	width;
-	int	i;
-	
-	fd = open("42.txt", O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 	{
 		ft_putstr("Error opening file");
 		return (1);
 	}
-	i = 0;
-	holder = (char **)malloc(sizeof(char *) * 1000);
-	ft_bzero(holder, 1000);
-	if (fd > 0)
-	{
-		while (get_next_line(fd, &lines) == 1)
-		{
-			holder[i] = ft_strdup(lines);
-			//width = ft_strlen(line);
-			ft_putstr(holder[i]);
-			ft_putchar('\n');
-			i++;
-			free(lines);
-		}
-		ft_putnbr(i);
-		ft_putchar('\n');
-	}
-
-	int a;
-	int b;
-
-	a = 0;
-	b = 0;
-	
-	while (holder[a])
-	{
-		ft_putstr(holder[a]);
-		ft_putchar('\n');
-		a++;
-	}
-	return (0);
-	close(fd);
-	return (0);
 }
 
+static int	read_cols(int fd)
+{
+	char	*lines;
+	int		rows;
+
+	rows = 0;
+	while (get_next_line(fd, &lines) == 1)
+	{
+		rows++;
+	}
+	return (rows);
+}
+
+void		read_map()
+{
+	char	*lines;
+	char	**holder;
+	int		fd;
+	int		i;
+	int		num_rows;
+	
+	fd = open("42.txt", O_RDONLY);
+	fd_error_check(fd);
+	num_rows = 0;
+	i = 0;
+	if (fd > 0)
+	{
+
+	}
+	close(fd);
+}
+
+int			main()
+{
+	return (0);
+}
