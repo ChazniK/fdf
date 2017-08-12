@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/11 17:01:01 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/12 18:24:41 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ typedef struct	s_map
 {
 	int			num_rows;
 	int			num_cols;
-	int			**map;
+//	int			**map;
+//	int			i;
+//	int			j;
 	char		**data;
 }				t_map;
 
