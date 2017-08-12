@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 17:39:25 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/11 18:46:51 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/12 18:00:42 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,24 @@ static void	get_map_dim(int fd, t_map *tmap)
 {
 	char	*line;
 	int		i;
+	char	*copy;
 
 	i = 0;
 	tmap->num_rows = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		tmap->num_rows++;
+		copy = ft_strdup(line);
+		free(line);
 	}
 	tmap->num_cols = 0;
-	while (line[i])
+	while (copy[i])
 	{
-		if (ft_isdigit(line[i]))
+		if (ft_isdigit(copy[i]))
 			tmap->num_cols++;
-		i++;
+		i++;	
 	}
-	free(line);
+	free(copy);
 }
 
 void		store_map()
@@ -48,39 +51,30 @@ void		store_map()
 	int		**map_arr;
 	char	*line;
 	t_map	tmap;
-	//int		i;
-	
+
+	fd = open("42.fdf", O_RDONLY);
+	fd_error_check(fd);
+	if (fd > 0)
+		get_map_dim(fd, &tmap);
+	map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
+	close(fd);
 	fd = open("42.fdf", O_RDONLY);
 	fd_error_check(fd);
 	if (fd > 0)
 	{
-		get_map_dim(fd, &tmap);
-		printf("point 1\n");
-		map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
-		printf("point 2\n");
-		if (get_next_line(fd, &line) == 1)	
+		tmap.i = 0;
+		while (get_next_line(fd, &line) == 1)
 		{
-			//i = 0;
-			printf("point 3\n");
-			//tmap.data = ft_strsplit(line, ' ');
-			//printf("%s\n", tmap.data);
-			//printf("%s\n", tmap.data[0]);
-		}
- 		/*int	a = 0;
-		int	b;
-		while (a < tmap.num_rows)
-		{
-			b = 0;
-			while (b < tmap.num_cols)
+			tmap.j = 0;
+			tmap.data = ft_strsplit(line, ' ');
+			free(line);
+			while (tmap.j < tmap.num_cols)
 			{
-				printf("%d", map_arr[a][b]);
-				b++;
+				map_arr[tmap.i][tmap.j] = ft_atoi(tmap.data[tmap.j]);
+				tmap.j++;
 			}
-			printf("\n");
-			a++;
+			tmap.i++;
 		}
-		printf("Rows 	:%d\n", tmap.num_rows);
-		printf("Columns :%d\n", tmap.num_cols);*/
 	}
 	close(fd);
 }
