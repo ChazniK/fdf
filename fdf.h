@@ -28,6 +28,14 @@ typedef struct	s_line
 	float		step;
 }				t_line;
 
+typedef struct	s_map
+{
+	int			num_rows;
+	int			num_cols;
+	int			**map;
+	char		**data;
+}				t_map;
+
 typedef struct	s_env
 {
 	void		*mlx;
