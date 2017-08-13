@@ -39,18 +39,17 @@
 	}
 }*/
 
-void		put_points(t_map tmap, t_env te)
+void		cart_to_iso(t_map tmap, t_env te)
 {
 	int		x;
 	int		y;
-	int		y1;
+	int		x1;
 
-	te.tp.cart_x = 0;
-	te.tp.cart_y = 0;
+	//te.tp.cart_x = 0;
+	//te.tp.cart_y = 0;
 	te.tp.iso_x = 0;
 	te.tp.iso_y = 0;
-	y1 = 0;
-//	z = tmap.map_arr[x][y];
+	x1 = 0;
 	x = 0;
 	while (x  < tmap.num_rows)
 	{
@@ -58,16 +57,16 @@ void		put_points(t_map tmap, t_env te)
 		while (y < tmap.num_cols)
 		{
 			printf("%d ", tmap.map_arr[x][y]);
-			y1 = y;
+			x1 = x;
 			if (tmap.map_arr[x][y] > 0)
 			{
-				y1 = y1 - tmap.map_arr[x][y];
+				x1 = x1 - tmap.map_arr[x][y];
 			}
-			te.tp.cart_x = x * 20 + 520;
-			te.tp.cart_y = y1 * 20 + 40;
-			te.tp.iso_x = (te.tp.cart_x - te.tp.cart_y);
-			te.tp.iso_y = (te.tp.cart_x + te.tp.cart_y) / 2;
-			mlx_pixel_put(te.mlx, te.win, te.tp.iso_x, te.tp.iso_y, 0X0000FF00);
+			//te.tp.cart_x = (x * 15 + 400) / 2;
+			//te.tp.cart_y = (y1 * 15 + 20) / 2;
+			te.tp.iso_y = (y + x1) / 2; 
+			te.tp.iso_x = (y - x1);
+			mlx_pixel_put(te.mlx, te.win, te.tp.iso_x * 15 + 200, te.tp.iso_y * 15 + 200, 0X0000FF00);
 			y++;
 		}
 		printf("\n");

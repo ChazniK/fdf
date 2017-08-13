@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static void	fd_error_check(int fd)
 {
@@ -40,7 +41,6 @@ static void	get_map_dim(int fd, t_map *tmap)
 			tmap->num_cols++;
 		i++;
 	}
-	free(copy);
 }
 
 t_map		store_map(void)
@@ -53,6 +53,7 @@ t_map		store_map(void)
 	fd = open("42.fdf", O_RDONLY);
 	fd_error_check(fd);
 	get_map_dim(fd, &tmap);
+	printf ("rows :%d cols : %d\n",tmap.num_rows, tmap.num_cols);
 	tmap.map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
 	close(fd);
 	fd = open("42.fdf", O_RDONLY);

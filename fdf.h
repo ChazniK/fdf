@@ -37,13 +37,22 @@ typedef struct	s_map
 	int			**map_arr;
 }				t_map;
 
+typedef struct	s_points
+{
+	int			iso_x;
+	int			iso_y;
+	int			cart_x;
+	int			cart_y;
+}				t_points;
+
 typedef struct	s_env
 {
 	void		*mlx;
 	void		*win;
+	t_points	tp;
 }				t_env;
 
 t_map			store_map(void);
-void			put_points(t_map tmap, t_env te);
+void			cart_to_iso(t_map tmap, t_env te);
 
 #endif
