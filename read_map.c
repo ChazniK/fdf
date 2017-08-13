@@ -6,19 +6,17 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:39:53 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/13 13:40:32 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/13 14:30:02 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <mlx.h>
 #include "fdf.h"
 
-int			fd_error_check(int fd)
+static void	fd_error_check(int fd)
 {
 	if (fd < 0)
 		ft_putstr("Error opening file");
-	return (1);
+	return ;
 }
 
 static void	get_map_dim(int fd, t_map *tmap)
@@ -71,12 +69,4 @@ t_map		store_map(void)
 	}
 	close(fd);
 	return (tmap);
-}
-
-int			main(void)
-{
-	t_map	map;
-
-	map = store_map();
-	return (0);
 }

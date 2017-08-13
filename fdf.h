@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/13 13:39:07 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/13 15:02:22 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ typedef struct	s_env
 	void		*mlx;
 	void		*win;
 }				t_env;
+
+t_map			store_map(void);
+void			put_points(t_map tmap, t_env te);
 
 #endif
