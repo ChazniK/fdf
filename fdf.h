@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/13 15:02:22 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/16 18:05:40 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_line
 	float		dx;
 	float		dy;
 	float		step;
+	int			**points;
 }				t_line;
 
 typedef struct	s_map

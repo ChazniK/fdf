@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:39:53 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/13 14:30:02 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/08/16 18:11:24 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	get_map_dim(int fd, t_map *tmap)
 	{
 		tmap->num_rows++;
 		copy = ft_strdup(line);
-		free(line);
 	}
 	tmap->num_cols = 0;
 	while (copy[i])
@@ -53,7 +52,6 @@ t_map		store_map(void)
 	fd = open("42.fdf", O_RDONLY);
 	fd_error_check(fd);
 	get_map_dim(fd, &tmap);
-	printf ("rows :%d cols : %d\n",tmap.num_rows, tmap.num_cols);
 	tmap.map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
 	close(fd);
 	fd = open("42.fdf", O_RDONLY);
@@ -65,7 +63,6 @@ t_map		store_map(void)
 		data = ft_strsplit(line, ' ');
 		while (++tmap.j < tmap.num_cols)
 			tmap.map_arr[tmap.i][tmap.j] = ft_atoi(data[tmap.j]);
-		free(line);
 		tmap.i++;
 	}
 	close(fd);
