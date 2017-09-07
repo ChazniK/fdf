@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arr_ints.c                                      :+:      :+:    :+:   */
+/*   store_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/07 15:14:02 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/07 16:43:40 by ckatz            ###   ########.fr       */
+/*   Created: 2017/09/07 08:38:26 by ckatz             #+#    #+#             */
+/*   Updated: 2017/09/07 08:56:27 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
+#include <stdio.h>
 
-int			**ft_arr_ints(int rows, int cols)
+int			read_map(t_map *map, int fd, char *filename)
 {
 	int		i;
-	int		j;
-	int		**new_arr;
+	char	*line;
 
-	i = 0;
-	new_arr = (int**)malloc(sizeof(int*) * rows);
-	if (!new_arr)
-		return (NULL);
-	while (i < rows)
+	map->num_rows = 0;
+	map->num_cols = 0;
+	fd = open(filename, O_RDONLY);
+	while ((get_next_line(fd, &line) == 1))
 	{
-		new_arr[i] = (int*)malloc(sizeof(int) * cols);
-		if (!new_arr[i])
-			return (NULL);
-		j = 0;
-		while (j < cols)
+		while (line[i])
 		{
-			new_arr[i][j] = 0;
-			j++;
+
 		}
-		i++;
 	}
-	return (new_arr);
+}
+
+int			main(int argc, char **argv)
+{
+	int		fd;
+	char	*filename;
+
+	filename = argv[1];
+
+	return (argc);
 }
