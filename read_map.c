@@ -6,11 +6,12 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:39:53 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/08 03:08:38 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/08 21:41:14 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static void		fd_error_check(int fd)
 {
@@ -56,27 +57,25 @@ static void		populate_map(int fd, t_map tmap)
 {
 	char		**data;
 	char		*line;
-	int			count;
+	int			cols;
+	int			index;
 
-	tmap.i = 0;
-	count = 0;
+	index = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
-		tmap.j = 0;
+		cols = 0;
 		data = ft_strsplit(line, ' ');
-		while (data[count])
-			count++;
-		if (count > tmap.num_cols)
+		while (data[cols])
+			cols++;
+		if (cols < tmap.num_cols)
 		{
-			ft_putstr("Found wrong line length. Exiting.\n");
+			ft_putendl("Found wrong line length. Exiting...");
 			exit(fd);
 		}
-		while (tmap.j < tmap.num_cols)
-		{
-			tmap.map_arr[tmap.i][tmap.j] = ft_atoi(data[tmap.j]);
-			tmap.j++;
-		}
-		tmap.i++;
+		cols = -1;
+		while (++cols < tmap.num_cols)
+			tmap.map_arr[index][cols] = ft_atoi(data[cols]);
+		index++;
 		free(line);
 	}
 }
