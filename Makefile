@@ -6,15 +6,15 @@
 #    By: omeyer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/02 14:51:42 by omeyer            #+#    #+#              #
-#    Updated: 2017/09/07 08:14:47 by ckatz            ###   ########.fr        #
+#    Updated: 2017/09/08 03:11:46 by ckatz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRC = read_map.c
+SRC = read_map.c draw.c main.c
 
-OBJ = read_map.o
+OBJ = read_map.o draw.o main.o
 
 FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 

@@ -6,14 +6,14 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:46:36 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/16 18:06:41 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/08 03:22:54 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static void	dda(t_line line, t_env env)
+/*static void	dda(t_line line, t_env env)
 {
 	float	x;
 	float	y;
@@ -37,7 +37,7 @@ static void	dda(t_line line, t_env env)
 		y = y + line.dy;
 		i = i + 1;
 	}
-}
+}*/
 
 void		cart_to_iso(t_map tmap, t_env te)
 {

@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/07 10:57:38 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/08 03:29:54 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ typedef struct	s_env
 }				t_env;
 
 t_map			store_map(char *filename);
-//void			cart_to_iso(t_map tmap, t_env te);
+void			cart_to_iso(t_map tmap, t_env te);
 
 #endif
