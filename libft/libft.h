@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 15:30:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/06/22 15:34:47 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/13 18:31:07 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ size_t	ft_charcount(long n);
 int		ft_wordc(char const *str, char c);
 int		get_next_line(int const fd, char **line);
 int		**ft_arr_ints(int rows, int cols);
+double	**ft_arr_doubles(int rows, int cols);
 
 #endif
