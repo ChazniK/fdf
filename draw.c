@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:46:36 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/08 03:22:54 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/15 22:46:50 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		cart_to_iso(t_map tmap, t_env te)
 			te.tp.iso_y = (te.tp.cart_x + te.tp.cart_y) / 2;
 			if (tmap.map_arr[y][x] > 0)
 				te.tp.iso_y = te.tp.iso_y - tmap.map_arr[y][x] * 10;
-			mlx_pixel_put(te.mlx, te.win, te.tp.iso_x, te.tp.iso_y, 0X0000FF00);
+			mlx_pixel_put(te.mlx, te.win, te.tp.iso_x, te.tp.iso_y, 0X00FF0000);
 			x++;
 		}
 		y++;
