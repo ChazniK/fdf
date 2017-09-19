@@ -18,6 +18,7 @@
 # include <mlx.h>
 # include <math.h>
 
+# define SCALE 10
 # define WIDTH 640
 # define HEIGHT 480
 # define ESC 53
@@ -64,7 +65,9 @@ typedef struct	s_env
 	t_line		tl;
 }				t_env;
 
-t_map			store_map(char *filename);
-void			cart_to_iso(t_map tmap, t_env te, t_co_pts *pts);
+t_map		store_map(char *filename);
+void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts);	
+void		draw_horizontal(t_map tmap, t_env te, t_co_pts *pts);
+void		draw_vertical(t_map tmap, t_env te, t_co_pts *pts);
 
 #endif
