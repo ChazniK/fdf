@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/18 18:55:39 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/19 18:51:04 by ckatz            ###   ########.fr       */
 /*   Updated: 2017/09/10 01:41:15 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -24,13 +24,13 @@
 
 typedef struct	s_line
 {
-	float		x1;
-	float		y1;
-	float		x2;
-	float		y2;
-	float		dx;
-	float		dy;
-	float		step;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	double		dx;
+	double		dy;
+	double		step;
 	double		**points_x;
 	double		**points_y;
 }				t_line;
@@ -65,6 +65,6 @@ typedef struct	s_env
 }				t_env;
 
 t_map			store_map(char *filename);
-void			cart_to_iso(t_map tmap, t_env te, );
+void			cart_to_iso(t_map tmap, t_env te, t_co_pts *pts);
 
 #endif
