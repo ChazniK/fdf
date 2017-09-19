@@ -66,35 +66,14 @@ static void draw_line(t_env m_l_x, t_line co_xy)
 	}
 }
 
-void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts)
+
+void		draw_horizontal(t_map tmap, t_env te, t_co_pts *pts)
 {
 	int		x;
 	int		y;
 	t_line	line;
-	double	scale;
 
-	pts = (t_co_pts*)malloc(sizeof(*pts) * (tmap.num_rows * tmap.num_cols));
-	line.points_x = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
-	line.points_y = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
 	y = 0;
-	scale = 10;
-	while (++y < tmap.num_rows)
-	{
-		x = 0;
-		while (++x < tmap.num_cols)
-		{
-			te.tp.cart_x = x * scale + 350;
-			te.tp.cart_y = y * scale + 100;
-			te.tp.iso_x = te.tp.cart_x - te.tp.cart_y;
-			te.tp.iso_y = (te.tp.cart_x + te.tp.cart_y) / 2;
-			if (tmap.map_arr[y][x] > 0)
-				te.tp.iso_y = te.tp.iso_y - tmap.map_arr[y][x] * 10;
-			line.points_x[y][x] = te.tp.iso_x;
-			line.points_y[y][x] = te.tp.iso_y;
-		}
-	}
-}
-/*	y = 0;
 	while (y < tmap.num_rows)
 	{
 		x = 0;
@@ -107,9 +86,15 @@ void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts)
 			draw_line(te, line);
 			x++;
 		}
-		printf("\n");
 		y++;
 	}
+}
+
+void		draw_vertical(t_map tmap, t_env te, t_co_pts *pts)
+{
+	int		x;
+	int		y;
+	t_line	line;
 
 	x = 0;
 	while (x < tmap.num_cols)
@@ -126,5 +111,5 @@ void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts)
 		}
 		x++;
 	}
-}*/
+}
 

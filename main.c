@@ -37,6 +37,8 @@ int				main(int argc, char **argv)
 	}
 	te.win = mlx_new_window(te.mlx, WIDTH, HEIGHT, "fdf");
 	cart_to_iso(map, te, pts);
+	draw_horizontal(map, te, pts);
+	draw_vertical(map, te, pts);
 	mlx_key_hook(te.win, exit_funct, 0);
 	mlx_loop(te.mlx);
 	return (0);

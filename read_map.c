@@ -96,3 +96,30 @@ t_map			store_map(char *filename)
 	close(fd);
 	return (tmap);
 }
+
+void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts)
+{
+	int		x;
+	int		y;
+	t_line	line;
+
+	pts = (t_co_pts*)malloc(sizeof(*pts) * (tmap.num_rows * tmap.num_cols));
+	line.points_x = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
+	line.points_y = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
+	y = -1;
+	while (++y < tmap.num_rows)
+	{
+		x = -1;
+		while (++x < tmap.num_cols)
+		{
+			te.tp.cart_x = x * SCALE + 350;
+			te.tp.cart_y = y * SCALE + 100;
+			te.tp.iso_x = te.tp.cart_x - te.tp.cart_y;
+			te.tp.iso_y = (te.tp.cart_x + te.tp.cart_y) / 2;
+			if (tmap.map_arr[y][x] > 0)
+				te.tp.iso_y = te.tp.iso_y - tmap.map_arr[y][x] * 10;
+			line.points_x[y][x] = te.tp.iso_x;
+			line.points_y[y][x] = te.tp.iso_y;
+		}
+	}
+}
