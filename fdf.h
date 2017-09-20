@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/11 16:32:47 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/19 18:51:04 by ckatz            ###   ########.fr       */
-/*   Updated: 2017/09/10 01:41:15 by ckatz            ###   ########.fr       */
+/*   Created: 2017/09/20 18:08:30 by ckatz             #+#    #+#             */
+/*   Updated: 2017/09/20 18:10:12 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +17,17 @@
 # include <mlx.h>
 # include <math.h>
 
-# define SCALE 10
-# define WIDTH 640
-# define HEIGHT 480
+# define SCALE 3
+# define WIDTH 800
+# define HEIGHT 600
 # define ESC 53
 
 typedef struct	s_line
 {
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
+	int			x1;
+	int			y1;
+	int			x2;
+	int			y2;
 	double		dx;
 	double		dy;
 	double		step;
@@ -51,12 +50,6 @@ typedef struct	s_points
 	int			cart_y;
 }				t_points;
 
-typedef struct	s_coordinates
-{
-	int			co_x;
-	int			co_y;
-}				t_co_pts;
-
 typedef struct	s_env
 {
 	void		*mlx;
@@ -65,9 +58,9 @@ typedef struct	s_env
 	t_line		tl;
 }				t_env;
 
-t_map		store_map(char *filename);
-void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts);	
-void		draw_horizontal(t_map tmap, t_env te, t_co_pts *pts);
-void		draw_vertical(t_map tmap, t_env te, t_co_pts *pts);
+t_map			store_map(char *filename);
+void			cart_to_iso(t_map tmap, t_env te);
+void			draw_horizontal(t_map tmap, t_env te);
+void			draw_vertical(t_map tmap, t_env te);
 
 #endif

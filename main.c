@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:55:02 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/15 22:46:53 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/20 18:11:01 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,27 @@ int			exit_funct(int keycode)
 	return (0);
 }
 
-int				main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_map		map;
-	t_env		te;
-	t_co_pts	*pts;
-	char		*filename;
+	t_map	map;
+	t_env	te;
+	char	*filename;
 
 	te.mlx = mlx_init();
 	if (argc != 2)
+	{
 		ft_putendl("Incorrect number of parameters entered!");
+		return (-1);
+	}
 	else
 	{
 		filename = argv[1];
 		map = store_map(filename);
 	}
 	te.win = mlx_new_window(te.mlx, WIDTH, HEIGHT, "fdf");
-	cart_to_iso(map, te, pts);
-	draw_horizontal(map, te, pts);
-	draw_vertical(map, te, pts);
+	cart_to_iso(map, te);
+	draw_horizontal(map, te);
+	draw_vertical(map, te);
 	mlx_key_hook(te.win, exit_funct, 0);
 	mlx_loop(te.mlx);
 	return (0);

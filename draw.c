@@ -6,23 +6,23 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:46:36 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/19 18:53:10 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/20 18:15:56 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static void swap(int *n1, int *n2)
+static void		swap(int *n1, int *n2)
 {
-	int temp;
+	int			temp;
 
 	temp = *n1;
 	*n1 = *n2;
 	*n2 = temp;
 }
 
-static void abs_swap(int **a, int **b, t_line *co_xy)
+static void		abs_swap(int **a, int **b, t_line *co_xy)
 {
 	if (abs(co_xy->x1 - co_xy->x2) >= abs(co_xy->y1 - co_xy->y2))
 	{
@@ -38,13 +38,13 @@ static void abs_swap(int **a, int **b, t_line *co_xy)
 	}
 }
 
-static void draw_line(t_env m_l_x, t_line co_xy)
+static void		draw_line(t_env m_l_x, t_line co_xy)
 {
-	double  slope;
-	double  offset;
-	int     iterate;
-	int     *a;
-	int     *b;
+	double		slope;
+	double		offset;
+	int			iterate;
+	int			*a;
+	int			*b;
 
 	slope = 0;
 	offset = 0;
@@ -66,12 +66,11 @@ static void draw_line(t_env m_l_x, t_line co_xy)
 	}
 }
 
-
-void		draw_horizontal(t_map tmap, t_env te, t_co_pts *pts)
+void			draw_horizontal(t_map tmap, t_env te)
 {
-	int		x;
-	int		y;
-	t_line	line;
+	int			x;
+	int			y;
+	t_line		line;
 
 	y = 0;
 	while (y < tmap.num_rows)
@@ -90,11 +89,11 @@ void		draw_horizontal(t_map tmap, t_env te, t_co_pts *pts)
 	}
 }
 
-void		draw_vertical(t_map tmap, t_env te, t_co_pts *pts)
+void			draw_vertical(t_map tmap, t_env te)
 {
-	int		x;
-	int		y;
-	t_line	line;
+	int			x;
+	int			y;
+	t_line		line;
 
 	x = 0;
 	while (x < tmap.num_cols)
@@ -112,4 +111,3 @@ void		draw_vertical(t_map tmap, t_env te, t_co_pts *pts)
 		x++;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:39:53 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/08 21:41:14 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/20 18:12:04 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,12 @@ t_map			store_map(char *filename)
 	return (tmap);
 }
 
-void		cart_to_iso(t_map tmap, t_env te, t_co_pts *pts)
+void			cart_to_iso(t_map tmap, t_env te)
 {
-	int		x;
-	int		y;
-	t_line	line;
+	int			x;
+	int			y;
+	t_line		line;
 
-	pts = (t_co_pts*)malloc(sizeof(*pts) * (tmap.num_rows * tmap.num_cols));
 	line.points_x = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
 	line.points_y = ft_arr_doubles(tmap.num_rows, tmap.num_cols);
 	y = -1;
