@@ -13,11 +13,11 @@
 #include "fdf.h"
 #include <stdio.h>
 
-static void		fd_error_check(int fd)
+int		fd_error_check(int fd)
 {
 	if (fd < 0)
-		ft_putstr("Error opening file");
-	return ;
+		perror("Error opening file");
+	return (fd);
 }
 
 static void		get_map_dim(int fd, t_map *tmap)
@@ -86,12 +86,14 @@ t_map			store_map(char *filename)
 	t_map		tmap;
 
 	fd = open(filename, O_RDONLY);
-	fd_error_check(fd);
+	if (fd_error_check(fd) < 0)
+		exit(fd);
 	get_map_dim(fd, &tmap);
-	tmap.map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
 	close(fd);
 	fd = open(filename, O_RDONLY);
-	fd_error_check(fd);
+	if (fd_error_check(fd) < 0)
+		exit(fd);
+	tmap.map_arr = ft_arr_ints(tmap.num_rows, tmap.num_cols);
 	populate_map(fd, tmap);
 	close(fd);
 	return (tmap);

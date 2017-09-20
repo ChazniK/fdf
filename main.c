@@ -26,7 +26,6 @@ int			main(int argc, char **argv)
 	t_env	te;
 	char	*filename;
 
-	te.mlx = mlx_init();
 	if (argc != 2)
 	{
 		ft_putendl("Incorrect number of parameters entered!");
@@ -34,14 +33,15 @@ int			main(int argc, char **argv)
 	}
 	else
 	{
+		te.mlx = mlx_init();
 		filename = argv[1];
 		map = store_map(filename);
+		te.win = mlx_new_window(te.mlx, WIDTH, HEIGHT, "fdf");
+		cart_to_iso(map, te);
+		draw_horizontal(map, te);
+		draw_vertical(map, te);
+		mlx_key_hook(te.win, exit_funct, 0);
+		mlx_loop(te.mlx);
 	}
-	te.win = mlx_new_window(te.mlx, WIDTH, HEIGHT, "fdf");
-	cart_to_iso(map, te);
-	draw_horizontal(map, te);
-	draw_vertical(map, te);
-	mlx_key_hook(te.win, exit_funct, 0);
-	mlx_loop(te.mlx);
 	return (0);
 }
