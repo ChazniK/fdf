@@ -6,14 +6,14 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/13 13:39:53 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/20 18:12:04 by ckatz            ###   ########.fr       */
+/*   Updated: 2017/09/21 10:16:41 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-int		fd_error_check(int fd)
+int				fd_error_check(int fd)
 {
 	if (fd < 0)
 		perror("Error opening file");
